@@ -9,16 +9,8 @@ import { loadEnvironment } from './config.js';
 
 export const validateAuthMethod = (authMethod: string): string | null => {
   loadEnvironment();
-  if (authMethod === AuthType.LOGIN_WITH_GOOGLE) {
-    return null;
-  }
 
-  if (authMethod === AuthType.USE_GEMINI) {
-    if (!process.env.GEMINI_API_KEY) {
-      return 'GEMINI_API_KEY environment variable not found. Add that to your .env and try again, no reload needed!';
-    }
-    return null;
-  }
+  // require usage and auth to be done via Vertex AI
 
   if (authMethod === AuthType.USE_VERTEX_AI) {
     const hasVertexProjectLocationConfig =
@@ -35,5 +27,5 @@ export const validateAuthMethod = (authMethod: string): string | null => {
     return null;
   }
 
-  return 'Invalid auth method selected.';
+  return 'Invalid auth method selected (only Vertex AI is supported).';
 };
