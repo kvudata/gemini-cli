@@ -27,8 +27,9 @@ export function AuthDialog({
     initialErrorMessage || null,
   );
   const items = [
-    { label: 'Login with Google', value: AuthType.LOGIN_WITH_GOOGLE },
-    { label: 'Gemini API Key (AI Studio)', value: AuthType.USE_GEMINI },
+    // Only allow using Vertex AI for secure, audited usage
+    // { label: 'Login with Google', value: AuthType.LOGIN_WITH_GOOGLE },
+    // { label: 'Gemini API Key (AI Studio)', value: AuthType.USE_GEMINI },
     { label: 'Vertex AI', value: AuthType.USE_VERTEX_AI },
   ];
 
